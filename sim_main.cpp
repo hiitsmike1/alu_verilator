@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
             errors += test_op(a, b, 3, expected_or, desc);
 
             sprintf(desc, "%d ^ %d", i, j);
-            errors += test_op(a, b, 4, xor, desc);
+            errors += test_op(a, b, 4, expected_xor, desc);
         }
     }
 
