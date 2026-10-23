@@ -75,8 +75,8 @@ alu_verilator/
 
 ## Related Projects
 
-- [4-bit ALU from discrete transistors (RTL)](https://github.com/michaelcrandall/REPO-NAME)
-- [8-bit CPU in Verilog](https://github.com/michaelcrandall/REPO-NAME)
+- [4-bit ALU from discrete transistors (RTL)](https://github.com/michaelcrandall/alu_rtl)
+- [8-bit CPU in Verilog](https://github.com/michaelcrandall/8bit-cpu)
 
 ## Author
 
