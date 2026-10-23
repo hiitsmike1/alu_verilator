@@ -3,6 +3,8 @@
 #include "verilated_vcd_c.h"
 #include <iostream>
 #include <cstdint>
+#include <cstdio>
+#include <string>
 
 // Global ALU instance, VCD trace, and simulation time
 Valu* top;
@@ -10,12 +12,12 @@ VerilatedVcdC* tfp;
 vluint64_t main_time = 0;
 
 // Helper function to test any implemented ALU operation
-int test_op(int8_t a, int8_t b, uint8_t op, int expected, const std::string& desc) {
+int test_op(int8_t a, int8_t b, uint8_t op, int expected, const std::string& desc, bool force_dump = false) {
     top->a = a;
     top->b = b;
     top->op = op;
     top->eval();
-    if (a % 16 == 0 && b % 16 == 0)  // dump only every 16th step to reduce vcd size
+    if (force_dump || a % 16 == 0 && b % 16 == 0)  // dump only every 16th step to reduce vcd size
         tfp->dump(main_time++);
     else
         main_time++;
@@ -42,6 +44,13 @@ int main(int argc, char** argv) {
     tfp->open("alu.vcd");
 
     int errors = 0;
+    // Short demo sequence for the README waveform (always dumped)
+    int8_t da = 25, db = 10;
+    errors += test_op(da, db, 0, static_cast<int8_t>(da + db), "demo add", true);
+    errors += test_op(da, db, 1, static_cast<int8_t>(da - db), "demo sub", true);
+    errors += test_op(da, db, 2, da & db, "demo and", true);
+    errors += test_op(da, db, 3, da | db, "demo or",  true);
+    errors += test_op(da, db, 4, da ^ db, "demo xor", true);
 
     // Test all 8-bit values for ADD, SUB, AND, OR, XOR
     for (int i = -128; i <= 127; i++) {
@@ -77,6 +86,7 @@ int main(int argc, char** argv) {
 
     // Wrap up
     tfp->close();
+    top->final();
     delete top;
 
     if (errors == 0) {
@@ -85,5 +95,5 @@ int main(int argc, char** argv) {
         std::cout << "Simulation finished with " << errors << " errors." << std::endl;
     }
 
-    return 0;
+    return errors ? 1 : 0;
 }
