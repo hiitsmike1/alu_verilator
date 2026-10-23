@@ -1,0 +1,11 @@
+obj_dir 
+
+*.vcd
+
+*.o
+
+*.d
+
+a.out
+
+
