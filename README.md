@@ -4,7 +4,7 @@ A 8-bit arithmetic logic unit written in Verilog and verified with a C++ testben
 
 **Project page:** https://michaelcrandall.github.io/projects/verilator-alu/
 
-<!--![Waveform from the ALU simulation](docs/waveform.png)-->
+![Waveform from the ALU simulation](docs/waveform.png)
 
 ## Overview
 
@@ -66,9 +66,9 @@ gtkwave alu.vcd
 
 ```
 alu_verilator/
-├── alu.v          # ALU design
+├── alu.v              # ALU design
 ├── sim/sim_main.cpp   # Verilator C++ testbench
-├── docs/              # waveform screenshot, block diagram
+├── docs/              # waveform screenshot
 ├── .gitignore         # ignores obj_dir/ and *.vcd
 └── README.
 ```
