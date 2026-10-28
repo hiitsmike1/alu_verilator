@@ -1,10 +1,10 @@
 # ALU in Verilog (Verilator)
 
-A 8-bit arithmetic logic unit written in Verilog and verified with a C++ testbench in Verilator, using waveform inspection in GTKWave.
+An 8-bit arithmetic logic unit written in Verilog and verified with a C++ testbench in Verilator, using waveform inspection in GTKWave.
 
-**Project page:** https://michaelcrandall.github.io/projects/verilator-alu/
+**Website:** https://hiitsmike1.github.io/michaelcrandall.github.io/
 
-![Waveform from the ALU simulation](docs/waveform.png)
+![Waveform from the ALU simulation: a = 25, b = 10 stepping through ADD, SUB, AND, OR, and XOR](docs/waveform.png)
 
 ## Overview
 
@@ -31,7 +31,7 @@ I built it to practice digital design and simulation-based verification, and as 
 - `sim_main.cpp` drives the ALU through every combination of `a`, `b`, and `op` for a total of 327,680 cases.
 - Each result is compared against a reference computed in C++.
 - "ALU passed all tests!" is all computations match expected results
-- A VCD trace is written during simulation and can be opened in GTKWave.
+- A VCD trace is written during simulation and can be opened in GTKWave.To keep the file small, only a sample of the steps is recorded, plus a short demo sequence (`a = 25`, `b = 10`) at the start.
 
 ## Requirements
 
@@ -67,7 +67,7 @@ gtkwave alu.vcd
 ```
 alu_verilator/
 ├── alu.v              # ALU design
-├── sim/sim_main.cpp   # Verilator C++ testbench
+├── sim_main.cpp   # Verilator C++ testbench
 ├── docs/              # waveform screenshot
 ├── .gitignore         # ignores obj_dir/ and *.vcd
 └── README.
@@ -81,4 +81,4 @@ alu_verilator/
 ## Author
 
 Michael Crandall, B.S. Electrical Engineering, University of Maryland (expected December 2028)
-[LinkedIn](https://linkedin.com/in/crandall0327) · [Portfolio](https://michaelcrandall.github.io)
+[LinkedIn](https://linkedin.com/in/crandall0327) · [Portfolio](https://hiitsmike1.github.io/michaelcrandall.github.io/)
